@@ -416,3 +416,66 @@ erDiagram
     product_variants ||--|{ variant_attributes : "variant_id"
     product_attributes ||--|{ variant_attributes : "attribute_id"
 ```
+### Mô tả
+#### 1. **members**
+- Lưu thông tin người dùng cuối (end-user).
+- Các trường quan trọng:
+  - **avatar**: ID của ảnh đại diện.
+  - **gender**, **day_of_birth**, **phone_number**: Thông tin cá nhân cơ bản.
+  - **token**: Chuỗi token dành cho các phiên đăng nhập.
+  - **meta**: Dữ liệu bổ sung dưới dạng JSON.
+
+#### 2. **users**
+- Lưu thông tin quản trị viên.
+- Trường **id_role** là khóa ngoại liên kết với bảng **roles** để xác định quyền của người dùng.
+
+#### 3. **roles**
+- Định nghĩa quyền hệ thống.
+- Các quyền được gán trực tiếp cho **users** hoặc **employees** thông qua **role_actions**.
+
+#### 4. **rbac_modules**, **rbac_actions**, **role_actions**
+- **rbac_modules**: Chứa thông tin về các mô-đun trong hệ thống.
+- **rbac_actions**: Định nghĩa các hành động cụ thể trong từng mô-đun.
+- **role_actions**: Nối vai trò (roles) với các hành động được phép.
+
+#### 5. **products**, **inventory**, **orders**, **order_items**
+- **products**: Lưu thông tin sản phẩm, giá, tồn kho.
+- **inventory**: Quản lý số lượng sản phẩm trong kho và các điều chỉnh.
+- **orders**: Thông tin các đơn đặt hàng.
+- **order_items**: Liệt kê các sản phẩm trong từng đơn hàng.
+
+#### 6. **discounts**, **coupons**
+- **discounts**: Các mã giảm giá dựa trên phần trăm.
+- **coupons**: Các CTUD cụ thể.
+
+#### 7. **employees**, **shifts**
+- **employees**: Thông tin nhân viên, gắn liền với vai trò.
+- **shifts**: Quản lý ca làm việc của từng nhân viên.
+
+#### 8. **loyalty_points**, **loyalty_transactions**
+- **loyalty_points**: Điểm tích lũy của thành viên.
+- **loyalty_transactions**: Lịch sử giao dịch liên quan đến điểm thưởng.
+
+#### 9. **suppliers**, **purchase_orders**
+- **suppliers**: Thông tin nhà cung cấp.
+- **purchase_orders**: Quản lý phiếu mua hàng từ nhà cung cấp.
+
+#### 10. **tags**, **product_tags**
+- **tags**: Định nghĩa nhãn cho sản phẩm.
+- **product_tags**: Liên kết sản phẩm với các nhãn.
+
+#### 11. **returns**, **return_items**
+- **returns**: Quản lý thông tin trả hàng, hoàn tiền.
+- **return_items**: Chi tiết các sản phẩm được trả lại.
+
+#### 12. **product_categories**, **product_categories_mapping**
+- **product_categories**: Quản lý danh mục sản phẩm.
+- **product_categories_mapping**: Gắn sản phẩm với danh mục.
+
+#### 13. **product_attributes**, **product_attribute_values**
+- **product_attributes**: Định nghĩa các thuộc tính của sản phẩm (ví dụ: màu sắc, kích thước).
+- **product_attribute_values**: Giá trị thuộc tính của sản phẩm.
+
+#### 14. **product_variants**, **variant_attributes**
+- **product_variants**: Biến thể của sản phẩm (ví dụ: SKU riêng).
+- **variant_attributes**: Giá trị thuộc tính cho từng biến thể.
